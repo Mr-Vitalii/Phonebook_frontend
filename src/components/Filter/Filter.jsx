@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Checkbox, Container, Input } from "./Filter.styled";
+import { Checkbox, Container, Label, Input } from "./Filter.styled";
 
 import { useSelector, useDispatch } from "react-redux";
 import { selectStatusFilter } from "redux/contacts/selectors";
@@ -28,19 +28,19 @@ const Filter = () => {
 
   return (
     <Container>
-      <label>
+      <Label>
         Fined contacts by name
         <br />
         <Input type="text" value={filter} onChange={handleFilterChange} />
-      </label>
-      <label>
+      </Label>
+      <Label>
         Favorite 
         <Checkbox
           type="checkbox"
           checked={isChecked}
           onChange={handleCheckboxChange}
         />
-      </label>
+      </Label>
     </Container>
   );
 };

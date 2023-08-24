@@ -10,8 +10,8 @@ import {
   FormError,
   Input,
   InputContainer,
+  Label
 } from "./ContactForm .styled";
-
 
 
 const ContactForm = () => {
@@ -25,18 +25,18 @@ const ContactForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    const { name,  number } = data;
-
+  
+    const { name, number } = data;
+    
     if (contacts.some((contact) => contact.name === name)) {
       toast.error(`${name} is already in contacts`, {
         duration: 3000,
       });
       return;
     }
-    if (contacts.some((contact) => contact.number === number)) {
+    if (contacts.some((contact) => contact.phone === number)) {
       toast.error(`Number ${number} is already in contacts`, {
-        duration: 1500,
+        duration: 3000,
       });
       return;
     }
@@ -48,7 +48,7 @@ const ContactForm = () => {
   return (
     <ContactsForm onSubmit={handleSubmit(onSubmit)}>
       <InputContainer>
-        <label>
+        <Label>
           Name:
           <Input
             type="text"
@@ -62,10 +62,10 @@ const ContactForm = () => {
               Name may contain only letters, apostrophe, dash and spaces.
             </FormError>
           )}
-        </label>
+        </Label>
       </InputContainer>
       <InputContainer>
-        <label>
+        <Label>
           Email:
           <Input
             type="text"
@@ -76,21 +76,20 @@ const ContactForm = () => {
           />
           {errors.email && (
             <FormError>
-              Invalid email address. Email examples:
-              john.doe@example.com, jane_doe123@example.co.uk
+              Invalid email address. Email examples: john.doe@example.com,
+              jane_doe123@example.co.uk
             </FormError>
           )}
-        </label>
+        </Label>
       </InputContainer>
       <InputContainer>
-        <label>
+        <Label>
           Phone:
           <Input
             type="tel"
             {...register("number", {
               required: true,
-              pattern:
-                /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/,
+              pattern: /^[\d\s\-()+]*$/,
             })}
           />
           {errors.number && (
@@ -99,7 +98,7 @@ const ContactForm = () => {
               parentheses and can start with +
             </FormError>
           )}
-        </label>
+        </Label>
       </InputContainer>
       <Button type="submit">Add contact</Button>
     </ContactsForm>

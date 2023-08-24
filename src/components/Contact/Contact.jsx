@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 
-import {
-  DeleteButton,
-  Item,
-  ButtonContainer,
-} from "./Contact.styled";
+import { DeleteButton, Container, ItemContainer, Item, ButtonContainer } from "./Contact.styled";
 
 import { useDispatch } from "react-redux";
 import { deleteContact, changeStatus } from "redux/contacts/operations";
@@ -35,11 +31,11 @@ export const Contact = ({ name, phone, id, favorite }) => {
   };
 
   return (
-    <Item>
-      <div>
-        <span>{name}: </span>
-        <span>{phone}</span>
-      </div>
+    <Container>
+      <ItemContainer>
+        <Item>{name}: </Item>
+        <Item>{phone}</Item>
+      </ItemContainer>
       <ButtonContainer>
         <IconButton onClick={() => handleFavoriteStatus(id)}>
           {isFavorite ? <FavoriteIcon /> : <FavoriteBorderOutlinedIcon />}
@@ -48,6 +44,6 @@ export const Contact = ({ name, phone, id, favorite }) => {
           Delete
         </DeleteButton>
       </ButtonContainer>
-    </Item>
+    </Container>
   );
 };

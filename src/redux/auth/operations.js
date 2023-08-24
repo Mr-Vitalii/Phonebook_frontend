@@ -66,3 +66,24 @@ export const refreshUser = createAsyncThunk(
         }
     }
 );
+
+
+export const updateAvatar = createAsyncThunk(
+    'auth/avatars',
+    async (avatarImage, thunkAPI) => {
+        const state = thunkAPI.getState();
+        const persistedToken = state.auth.token;
+
+        if (persistedToken === null) {
+            return thunkAPI.rejectWithValue('Unable to change avatar');
+        }
+
+        try {
+            setAuthHeader(persistedToken);
+            const res = await axios.patch('/auth/avatars', avatarImage);
+            return res.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);

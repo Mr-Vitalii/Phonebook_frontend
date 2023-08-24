@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { registration, logIn, logOut, refreshUser } from './operations';
+import { registration, logIn, logOut, refreshUser, updateAvatar } from './operations';
 
 const initialState = {
-    user: { name: null, email: null, subscription: null },
+    user: { name: null, email: null, subscription: null, avatarURL: null },
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
@@ -14,7 +14,6 @@ const authSlice = createSlice({
     extraReducers: builder =>
         builder
             .addCase(registration.fulfilled, (state, action) => {
-                console.log(action);
                 state.user = action.payload.user;
             })
             .addCase(logIn.fulfilled, (state, action) => {
@@ -23,7 +22,7 @@ const authSlice = createSlice({
                 state.isLoggedIn = true;
             })
             .addCase(logOut.fulfilled, (state) => {
-                state.user = { name: null, email: null };
+                state.user = { name: null, email: null, subscription: null, avatarURL: null };
                 state.token = null;
                 state.isLoggedIn = false;
             })
@@ -37,6 +36,9 @@ const authSlice = createSlice({
             })
             .addCase(refreshUser.rejected, (state) => {
                 state.isRefreshing = false;
+            })
+            .addCase(updateAvatar.fulfilled, (state, action) => {
+                state.user.avatarURL = action.payload.avatarURL;
             })
 });
 

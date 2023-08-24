@@ -5,16 +5,30 @@ export const ContactsForm = styled.form`
 `;
 
 export const InputContainer = styled.div`
-  padding: 10px 0;
+  margin-bottom: 5px;
   &:last-of-type {
     margin-bottom: 10px;
   }
 `;
 
+export const Label = styled.label`
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+`;
+
 export const Input = styled.input`
-  margin-left: 5px;
+  padding: 8px;
+  padding-left: 15px;
+  width: 100%;
+  font-size: 14px;
+  border-radius: 5px;
   outline: none;
-  padding: 5px 10px;
+  transition: border-color 0.3s ease-in-out;
+
+  &:focus {
+    border: 2px solid ${(props) => props.theme.colors.skyBlueDark};
+  }
 `;
 
 export const FormError = styled.p`

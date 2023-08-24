@@ -1,25 +1,52 @@
-import React from 'react';
-
-import defaultAvatar from "./default-avatar.png";
+import React, { useState } from "react";
 
 import { logOut } from "redux/auth/operations";
 import { useDispatch } from "react-redux";
-import { Avatar, Button, Greeting, UserMenuContainer } from './UserMenu.styled';
-import { useAuth } from 'hooks/useAuth';
+
+import { Avatar, Button, Greeting, UserMenuContainer } from "./UserMenu.styled";
+import { useAuth } from "hooks/useAuth";
+import { AvatarWindow } from "components/AvatarWindow/AvatarWinidow";
+
 
 export const UserMenu = () => {
-  const avatar = defaultAvatar;
+
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { user } = useAuth();
-  // console.log(user);
 
-   return (
-     <UserMenuContainer>
-       <Avatar src={avatar} alt="" width="32" />
-       <Greeting>{user.email}</Greeting>
-       <Button type="button" onClick={() => dispatch(logOut())}>
-         Logout
-       </Button>
-     </UserMenuContainer>
-   );
-}
+  const isDefaultAvatar = (avatarURL) => {
+    const pattern = /gravatar/i;
+    return pattern.test(avatarURL);
+  }
+
+  const userAvatar = isDefaultAvatar(user.avatarURL)
+    ? user.avatarURL
+    : `http://localhost:5000/${user.avatarURL}`;
+  
+  const openModal = () => {
+    document.body.style.overflow = "hidden";
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    document.body.style.overflow = "";
+    setShowModal(false);
+  };
+
+  return (
+    <>
+      <UserMenuContainer>
+        <Avatar
+          src={userAvatar}
+          alt="user avatar"
+          width="32"
+          onClick={openModal}
+        />
+        <Greeting>{user.email}</Greeting>
+        <Button type="button" onClick={() => dispatch(logOut())}>
+          Logout
+        </Button>
+      </UserMenuContainer>
+      <AvatarWindow showModal={showModal} closeModal={closeModal} />
+    </>
+  );
+};

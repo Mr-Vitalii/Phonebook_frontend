@@ -10,14 +10,17 @@ const handleRejected = (state, action) => {
     state.error = action.payload;
 };
 
+const initialState = {
+    items: [],
+    isLoading: false,
+    error: null,
+}
+
+
 
 const contactsSlice = createSlice({
     name: "contacts",
-    initialState: {
-        items: [],
-        isLoading: false,
-        error: null,
-    },
+    initialState,
     extraReducers: builder =>
         builder
             .addCase(fetchContacts.pending, handlePending)
@@ -30,7 +33,6 @@ const contactsSlice = createSlice({
 
             .addCase(addContact.pending, handlePending)
             .addCase(addContact.fulfilled, (state, action) => {
-                
                 state.isLoading = false;
                 state.error = null;
                 state.items.push(action.payload);
@@ -41,8 +43,7 @@ const contactsSlice = createSlice({
             .addCase(deleteContact.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.error = null;
-                console.log(action.payload);
-                const index = state.items.findIndex(item => item.id === action.payload);
+                const index = state.items.findIndex(task => task._id === action.payload.id);
                 state.items.splice(index, 1);
             })
             .addCase(deleteContact.rejected, handleRejected)
@@ -59,8 +60,7 @@ const contactsSlice = createSlice({
             .addCase(logOut.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.error = null;
-                const index = state.items.findIndex(item => item.id === action.payload);
-                state.items.splice(index, 1);
+                state.items = [];
             })
             .addCase(logOut.rejected, handleRejected)
 

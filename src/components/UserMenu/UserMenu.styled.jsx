@@ -8,6 +8,7 @@ export const UserMenuContainer = styled.div`
 
 export const Avatar = styled.img`
   margin-right: 4;
+  border-radius: 50%;
 `;
 
 export const Greeting = styled.span`

@@ -1,15 +1,15 @@
+import { List } from "./ContactList.styled";
 
 import { useSelector } from "react-redux";
 import { selectFilteredContacts } from "redux/contacts/selectors";
 
 import { Contact } from "components/Contact/Contact";
 
-
 const ContactList = () => {
-const filteredContacts = useSelector(selectFilteredContacts);
+  const filteredContacts = useSelector(selectFilteredContacts);
 
   return (
-    <ul>
+    <List>
       {filteredContacts.map(({ name, phone, _id: id, favorite }) => (
         <Contact
           key={id}
@@ -19,7 +19,7 @@ const filteredContacts = useSelector(selectFilteredContacts);
           favorite={favorite}
         />
       ))}
-    </ul>
+    </List>
   );
 };
 

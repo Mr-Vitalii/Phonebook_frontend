@@ -1,10 +1,23 @@
 import styled from "@emotion/styled";
 
-export const Item = styled.li`
+export const Container = styled.li`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 5px;
   border-bottom: 2px solid ${(props) => props.theme.colors.skyBlueDark};
+  overflow-x: auto;
+`;
+
+export const ItemContainer = styled.div`
+  display: flex;
+  column-gap: 5px;
+  padding: 5px;
+  overflow-x: auto;
+`;
+
+export const Item = styled.div`
+  
 `;
 
 export const ButtonContainer = styled.div`

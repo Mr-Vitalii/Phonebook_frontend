@@ -32,34 +32,38 @@ To use the Phone Book Application effectively, follow these steps:
 - Enter your registered email and password.
 - Click on the login button.
 
-3. View your contacts:
+3. Ability to change avatar:
+
+- Click on the avatar picture.
+- Select the desired picture on your device.
+- Click the "Upload" button.
+
+4. View your contacts:
 
 - Once logged in, you will see a list of your contacts.
 - Contacts are displayed in a visually pleasing and user-friendly format.
 
-4. Add a new contact:
+5. Add a new contact:
 
 - Fill in the required details, such as name and phone number.
 - Click on the "Add Contact" button to add the contact.
 
-5. Delete a contact:
+6. Delete a contact:
 
 - Locate the contact you wish to delete.
 - Click on the "Delete" button next to the contact.
 
-6. Add a contact to your favorites list:
+7. Add a contact to your favorites list:
 
 - Locate the contact you wish to add to favorites list.
 - Click on the heart next to the contact.
 
-7. Filter contacts by name:
+8. Filter contacts by name:
 
 - Use the search bar at the top of the contact list.
 - Enter the name you want the contact list will update to show only the matching contacts.
 
-8. Filter contacts by "favorite" status:
+9. Filter contacts by "favorite" status:
 
 - Use the checkbox at the top of the contact list.
 - Toggle the checkbox to show only contacts with the status "favorite".
-
-

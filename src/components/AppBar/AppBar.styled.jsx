@@ -7,7 +7,7 @@ export const Header = styled.header`
   align-items: center;
   padding: 30px 15px;
   margin-bottom: 20px;
-  background-color: ${(props) => props.theme.colors.gray};
+  background-color: ${(props) => props.theme.colors.grey};
   border-bottom: 1px solid ${(props) => props.theme.colors.skyBlueDark};
 `;
 
