@@ -9,6 +9,7 @@ export const UserMenuContainer = styled.div`
 export const Avatar = styled.img`
   margin-right: 4;
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 export const Greeting = styled.span`
@@ -32,5 +33,3 @@ export const Button = styled.button`
     background-color: ${(props) => props.theme.colors.turquoise};
   }
 `;
-
-
