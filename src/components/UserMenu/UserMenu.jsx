@@ -13,15 +13,6 @@ export const UserMenu = () => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { user } = useAuth();
-
-  const isDefaultAvatar = (avatarURL) => {
-    const pattern = /gravatar/i;
-    return pattern.test(avatarURL);
-  }
-
-  const userAvatar = isDefaultAvatar(user.avatarURL)
-    ? user.avatarURL
-    : `http://localhost:5000/${user.avatarURL}`;
   
   const openModal = () => {
     document.body.style.overflow = "hidden";
@@ -36,7 +27,7 @@ export const UserMenu = () => {
     <>
       <UserMenuContainer>
         <Avatar
-          src={userAvatar}
+          src={user.avatarURL}
           alt="user avatar"
           width="32"
           onClick={openModal}
