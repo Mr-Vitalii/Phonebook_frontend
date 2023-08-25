@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = 'https://phonebook-app-backend-39fe.onrender.com/api';
 
 
 export const fetchContacts = createAsyncThunk(
